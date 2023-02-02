@@ -19,7 +19,9 @@
         </Grid.ColumnDefinitions>
         <StackPanel Name="stack">
             <Label Content="Размер шрифта" 
-                   HorizontalAlignment="Center"></Label>
+                   HorizontalAlignment="Center"
+                   Name="lblFontSize"
+                   ></Label>
             <Slider Name="fontSlider" 
                     Minimum="10" 
                     Maximum="35" 
@@ -48,7 +50,7 @@
             <Label Content="Семейство шрифтов" 
                    HorizontalAlignment="Center"></Label>
             <ComboBox Name="cmbFontFamily" 
-                      ItemsSource="{Binding Source={StaticResource SortedFontsCollection}}"></ComboBox>
+                      ItemsSource="{Binding Source={StaticResource SortedFontsCollection}}" SelectedIndex="-1"></ComboBox>
             <Label Content="Задний фон" 
                    HorizontalAlignment="Center"></Label>
             <ComboBox Name="cmbBackground" 
@@ -62,16 +64,33 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <Label Content="Выравнивание текста" 
+                   HorizontalAlignment="Center"></Label>
+            <ComboBox Name="cmbTextAlignment" 
+                      ItemsSource="{Binding textAlignments}">
+            </ComboBox>
+            <Label Content="Стиль текста" 
+                   HorizontalAlignment="Center"></Label>
+            <ComboBox Name="cmbTextDecoration">
+            </ComboBox>
+            
         </StackPanel>
-        <TextBlock Name="txtText" 
-                   FontFamily="{Binding ElementName=cmbFontFamily,Path=SelectedItem}" 
-                   FontStyle="{Binding ElementName=cmbFontStyles, Path=SelectedItem}" 
-                   Foreground="{Binding ElementName=cmbColor,Path=Foreground}" 
-                   FontSize="{Binding ElementName=fontSlider,Path=Value}" 
-                   FontWeight="{Binding ElementName =cmbFontWeight,Path=SelectedValue}" 
-                   Grid.Column="1" 
-                   TextWrapping="Wrap" 
-                   Text="Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."/>
+        <TextBox Name="txtText" 
+                 FontFamily="{Binding ElementName=cmbFontFamily,Path=SelectedItem}" 
+                 FontStyle="{Binding ElementName=cmbFontStyles, Path=SelectedItem}" 
+                 Foreground="{Binding ElementName=cmbColor,Path=Foreground}" 
+                 FontSize="{Binding ElementName=fontSlider,Path=Value}" 
+                 FontWeight="{Binding ElementName =cmbFontWeight,Path=SelectedValue}" 
+                 Grid.Column="1" 
+                 TextWrapping="Wrap"
+                 TextDecorations="{Binding ElementName=cmbTextDecoration,Path=SelectedItem}"
+                 TextAlignment="{Binding ElementName=cmbTextAlignment,Path=SelectedValue}"
+                 Text="Равным образом реализация намеченных плановых заданий влечет за собой процесс внедрения и модернизации дальнейших направлений развития. Разнообразный и богатый опыт постоянное информационно-пропагандистское обеспечение нашей деятельности играет важную роль в формировании позиций, занимаемых участниками в отношении поставленных задач. Повседневная практика показывает, что постоянное информационно-пропагандистское обеспечение нашей деятельности в значительной степени обуславливает создание новых предложений. Значимость этих проблем настолько очевидна, что рамки и место обучения кадров влечет за собой процесс внедрения и модернизации соответствующий условий активизации. Не следует, однако забывать, что начало повседневной работы по формированию позиции способствует подготовки и реализации форм развития. Равным образом реализация намеченных плановых заданий обеспечивает широкому кругу (специалистов) участие в формировании модели развития."
+                 AcceptsReturn="True"
+                 Language="ru-ru"
+                 SpellCheck.IsEnabled="True"
+                 
+                 />
 
     </Grid>
 </Window>
